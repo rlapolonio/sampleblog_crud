@@ -1,9 +1,15 @@
-<h1>Article</h1>
-<h2><%= @article.name %></h2>
-<p><%= @article.body %></p>
+<br>
+<div class="container-fluid py-5 bg-light ps-4 pe-4">
+  <h1 class="display-5 fw-bold"><%= @article.name %></h1>
+  <hr class="my-4">
+  <p class="col-md-12 fs-5"><%= @article.body %></p>
+  <br>
+  <p class="lead">
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+    <%= link_to "Back", articles_path, class: "btn btn-secondary" %>
+    <%= link_to "Delete", article_path(@article), class: "btn btn-danger",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+  </p>
+</div>
 
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Back", articles_path %>
-<%= link_to "Delete", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>

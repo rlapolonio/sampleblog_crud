@@ -1,8 +1,14 @@
-<h1>Articles</h1>
+<br>
+<%= link_to "New Article", new_article_path, class:"btn btn-primary btn-lg" %>
+<br>
+<div class="d-flex flex-column bg-light pt-4 pb-4 mt-4">
+  <% @articles.each do |article| %>
+    <div class="container-fluid ps-4 pe-4 mb-4">
+      <h2 class="display-6 fw-bold"><%= link_to article.name, article, class:"deco-none" %></h2>
+      <hr class="my-4">
+      <p><%= article.body %></p>
+    </div>
+  <% end %>
+</div>
 
-<% @articles.each do |article| %>
-    <h2><%= link_to article.name, article %></h2>
-    <p><%= article.body %></p>
-<% end %>
 
-<%= link_to "New Article", new_article_path %>

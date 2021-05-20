@@ -2,27 +2,31 @@
 
   <div>
     <% if article.errors.any? %>
-      <ul>
-        <% article.errors.full_messages.each do |message| %>
-          <li>
-              <%= message %>
-          </li>
-        <% end %>
-      </ul>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Operation failed</h4>
+        <p>Please check the following error(s):</p>
+        <hr>
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+            <li>
+                <%= message %>
+            </li>
+          <% end %>
+        </ul>
+        </div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+  <div class="field form-group">
+    <%= form.text_field :name, class: "form-control", placeholder: "Article Name" %>
   </div>
-
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+  <br>
+  <div class="field form-group">
+    <%= form.text_area :body, class: "form-control no-resize", rows: 10, placeholder: "Article Body Text (minimum of 10 characters)" %>
   </div>
-
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary"%>
+    <%= link_to "Back", articles_path, class: "btn btn-secondary" %>
   </div>
 <% end %>
